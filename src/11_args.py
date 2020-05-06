@@ -65,23 +65,30 @@ print(f3(8))     # Should print 9
 #
 # Note: Google "python keyword arguments".
 
-
+def f4(d=None, **kwargs):
+    if type(d) == dict:
+        for key, values in d.items():
+            print(f'Key: {key}, Values: {values}')
+    else:
+        pass
+    for key, values in kwargs.items():
+        print(f'Key: {key}, Values: {values}')
 
 # Should print
 # key: a, value: 12
 # key: b, value: 30
 f4(a=12, b=30)
-#
-# # Should print
-# # key: city, value: Berkeley
-# # key: population, value: 121240
-# # key: founded, value: "March 23, 1868"
-# f4(city="Berkeley", population=121240, founded="March 23, 1868")
-#
-# d = {
-#     "monster": "goblin",
-#     "hp": 3
-# }
-#
-# # How do you have to modify the f4 call below to make this work?
-# f4(d)
+
+# Should print
+# key: city, value: Berkeley
+# key: population, value: 121240
+# key: founded, value: "March 23, 1868"
+f4(city="Berkeley", population=121240, founded="March 23, 1868")
+
+d = {
+    "monster": "goblin",
+    "hp": 3
+}
+
+# How do you have to modify the f4 call below to make this work?
+f4(d)
